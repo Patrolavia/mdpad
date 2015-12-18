@@ -19,7 +19,7 @@ fi
 
 REPO=$(
     cat <<EOF | base64 -w 0
-deb http://httpredir.debian.org jessie main
+deb http://httpredir.debian.org/debian/ jessie main
 deb http://security.debian.org jessie/updates main
 EOF
     )
