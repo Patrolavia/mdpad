@@ -48,17 +48,15 @@ RUN export GOROOT=/go \\
  && nvm install \$NODE_VER \\
  && nvm use \$NODE_VER \\
  && git clone https://github.com/Patrolavia/oscar.git \$OSCAR \\
- && cd \$OSCAR \\
- && npm install \\
- && ./node_modules/.bin/fly build \\
- && mv build /frontend \\
- && cd / \\
+ && (cd \$OSCAR && npm install && ./node_modules/.bin/fly build) \\
+ && mv \$OSCAR/build /frontend \\
  && apt-get purge -y \$deps \\
  && apt-get autoremove --purge -y \\
  && apt-get clean -y \\
  && rm -fr \$GOROOT \$GOPATH \$OSCAR /go.tgz \$NVM_DIR ~/.node-gyp ~/.babel.json ~/.npm ~/.bashrc \\
  && mkdir /data
-ENTRYPOINT ["/darius/bin/darius","/data/config.json"]
+WORKDIR /data
+ENTRYPOINT ["/darius","/data/config.json"]
 EOF
 
 ERR=$?
