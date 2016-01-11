@@ -51,7 +51,7 @@ RUN export GOROOT=/go \\
  && wget -O /go.tgz https://storage.googleapis.com/golang/go\$GO_VER.linux-amd64.tar.gz \\
  && tar zxvf /go.tgz -C / \\
  && go get -v github.com/Patrolavia/darius \\
- && ([ "\$RUN_TEST" = "" ] || (service redis-server restart && cd \$GOPATH/src/github.com/Patrolavia/darius && go test -v ./... && service redis-server stop)) \\
+ && ([ "\$RUN_TEST" = "" ] || (export REDIS=:6379 && service redis-server restart && cd \$GOPATH/src/github.com/Patrolavia/darius && go test -v ./... && service redis-server stop)) \\
  && mv \$GOPATH/bin/darius / \\
  && wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash \\
  && . \$NVM_DIR/nvm.sh \\
