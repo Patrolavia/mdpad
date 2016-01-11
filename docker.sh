@@ -60,7 +60,7 @@ RUN export GOROOT=/go \\
  && git clone https://github.com/Patrolavia/oscar.git \$OSCAR \\
  && (cd \$OSCAR && npm install && ./node_modules/.bin/fly build && ([ "\$RUN_TEST" = "" ] || ./node_modules/.bin/fly test)) \\
  && mv \$OSCAR/build /frontend \\
- && apt-get install -y ca-certificates \\
+ && apt-get install -y ca-certificates fortune-mod fortunes fortunes-bofh-excuses \\
  && apt-get purge -y \$deps \\
  && apt-get autoremove --purge -y \\
  && apt-get clean -y \\
