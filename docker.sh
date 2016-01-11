@@ -65,7 +65,7 @@ RUN export GOROOT=/go \\
  && apt-get autoremove --purge -y \\
  && apt-get clean -y \\
  && (rm -fr \$GOROOT \$GOPATH \$OSCAR /go.tgz \$NVM_DIR ~/.node-gyp ~/.babel.json ~/.npm ~/.bashrc \\
-    /var/lib/apt/lists/* /var/lib/dpkg/info/* /tmp/npm* ~/.qws ~/.config /var/cache/fontconfig || true) \\
+    /var/lib/apt/lists/* /tmp/npm* ~/.qws ~/.config /var/cache/fontconfig || true) \\
  && mkdir /data
 WORKDIR /data
 ENTRYPOINT ["/darius","/data/config.json"]
